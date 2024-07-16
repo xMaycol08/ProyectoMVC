@@ -36,7 +36,7 @@ public class Conexion {
     public Conexion crearConexion() {
         String uriConexion = "mongodb+srv://owner:<PROYECTO_UTPL>@cluster0.s0hao0n.mongodb.net/test?retryWrites=true&w=majority&connectTimeoutMS=30000&socketTimeoutMS=30000";
         try {
-            dataB = MongoClients.create(uriConexion).getDatabase("BD-PROYECTO");
+            dataB = MongoClients.create(uriConexion).getDatabase("BD_PROYECTOMVC");
         } catch (MongoException ex) {
             JOptionPane.showMessageDialog(null, "Error en la conexión a MongoDB. Error: " + ex.toString());
         }
