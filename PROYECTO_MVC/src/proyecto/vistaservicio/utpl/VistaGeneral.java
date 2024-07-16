@@ -72,6 +72,11 @@ public class VistaGeneral extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         lblApellido.setText("Apellido :");
 
@@ -80,12 +85,17 @@ public class VistaGeneral extends javax.swing.JFrame {
                 txtApellidoActionPerformed(evt);
             }
         });
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
 
         lblNumero.setText("Numero Telefonico :");
 
-        txtNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNumeroActionPerformed(evt);
+        txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroKeyTyped(evt);
             }
         });
 
@@ -174,6 +184,11 @@ public class VistaGeneral extends javax.swing.JFrame {
         txtProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProductoActionPerformed(evt);
+            }
+        });
+        txtProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProductoKeyTyped(evt);
             }
         });
 
@@ -331,17 +346,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCalcularActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-          String input = txtNombre.getText();
-
-        if (input.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s]+")) {
-            if (txtNombre.getText().length() > 3) {
-            } else {
-                JOptionPane.showMessageDialog(this, "Por favor, ingrese un nombre valido, al menos 4 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_txtNombreActionPerformed
-
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
          String input = txtApellido.getText();
 
@@ -353,27 +357,6 @@ public class VistaGeneral extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
-         String input = txtNumero.getText();
-
-        if (input.matches("\\d*")) {
-            if (txtNumero.getText().length() == 10) {
-                String primerosDosDigitos = input.substring(0, 2);
-                if ("09".equals(primerosDosDigitos)) {
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Por favor, ingrese un teléfono válido con los dos primeros dígitos como '09'", "Error", JOptionPane.ERROR_MESSAGE);
-                    txtNumero.setText("");
-                }
-            } else if (txtNumero.getText().length() > 10) {
-                JOptionPane.showMessageDialog(this, "Por favor, ingrese un teléfono válido, SOLO 10 dígitos!", "Error", JOptionPane.ERROR_MESSAGE);
-                txtNumero.setText("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Por favor, ingrese un teléfono válido de 10 digitos", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_txtNumeroActionPerformed
-
     private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         String input = txtProducto.getText();
 
@@ -384,6 +367,53 @@ public class VistaGeneral extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtProductoActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char validacionNombre = evt.getKeyChar();
+        if (Character.isDigit(validacionNombre)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+         String input = txtNombre.getText();
+
+        if (input.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s]+")) {
+            if (txtNombre.getText().length() > 3) {
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un nombre valido, al menos 4 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+         char validacionApellido = evt.getKeyChar();
+        if (Character.isDigit(validacionApellido)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
+         char validaciontelefono = evt.getKeyChar();
+        if (Character.isLetter(validaciontelefono)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Ingresar solo numeros", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_txtNumeroKeyTyped
+
+    private void txtProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoKeyTyped
+         char validacionProducto = evt.getKeyChar();
+        if (Character.isDigit(validacionProducto)) {
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo letras");
+        }
+    }//GEN-LAST:event_txtProductoKeyTyped
 
     /**
      * @param args the command line arguments
