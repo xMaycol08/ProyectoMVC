@@ -34,7 +34,7 @@ public class Conexion {
     }
 
     public Conexion crearConexion() {
-        String uriConexion = "mongodb+srv://owner:<PROYECTO_UTPL>@cluster0.s0hao0n.mongodb.net/test?retryWrites=true&w=majority&connectTimeoutMS=30000&socketTimeoutMS=30000";
+        String uriConexion = "mongodb+srv://aaron:proyecto@cluster0.s0hao0n.mongodb.net/test?retryWrites=true&w=majority&connectTimeoutMS=30000&socketTimeoutMS=30000";
         try {
             dataB = MongoClients.create(uriConexion).getDatabase("BD_PROYECTOMVC");
         } catch (MongoException ex) {

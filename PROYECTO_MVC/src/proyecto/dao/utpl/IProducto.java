@@ -1,13 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package proyecto.dao.utpl;
 
-/**
- *
- * @author Xavier Celi
- */
+import java.awt.List;
+import proyecto.modelo.utpl.Producto;
+
+
 public interface IProducto {
+    public boolean GuardarProducto(Producto producto);
+    public Producto MostrarTabla(String cedula);
+    public int CalcularIntereses(int total);
+    
+    
     
 }
